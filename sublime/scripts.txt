@@ -1,0 +1,76 @@
+//RunJava build:
+
+{
+	"shell_cmd": "javac $file && java $file_base_name"
+}
+
+-----------------------------------------
+
+//Basic program for file I/O
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+	//Get input from the input.txt and print it in output.txt
+	static void performIO() {
+		try {
+			System.setIn(new FileInputStream("input.txt"));
+			System.setOut(new PrintStream(new FileOutputStream("output.txt")));
+		} catch (Exception e) {
+			System.err.println("Error");
+		}
+	}
+
+	//Write input & output
+	static void getIO() {
+		Scanner input = new Scanner(System.in);
+
+		//Take inputs
+		int num1 = input.nextInt();
+		int num2 = input.nextInt();
+		int num3 = input.nextInt();
+
+		//Close the input
+		input.close();
+
+		//Print the result
+		int result = getLargestNum(num1, num2, num3);
+		System.out.println(result);
+	}
+
+	//Write solution
+	static int getLargestNum(int num1, int num2, int num3) {
+		int largestNum;
+
+		if (num1 >= num2 && num1 >= num3) {
+			largestNum = num1;
+		} else if (num2 >= num1 && num2 >= num3) {
+			largestNum = num2;
+		} else {
+			largestNum = num3;
+		}
+
+		return largestNum;
+	}
+
+	public static void main(String[] args) {
+		performIO();
+		getIO();
+	}
+}
+
+-------------------------------------------
+
+//Terminus Build for JAVA:
+
+{
+     "target":"terminus_exec",
+     "cancel":"terminus_cancel_build",
+     "auto_close":false,
+     "focus":true,
+     "timeit":false,
+     "shell_cmd": "javac $file && java $file_base_name",
+     "cwd":"${file_path:'${folder}'}"
+ }
