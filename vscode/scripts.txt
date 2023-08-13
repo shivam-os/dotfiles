@@ -1,0 +1,3 @@
+Color theme: One dark pro darker
+File icon theme: Material icon theme
+Product icon theme: Default
